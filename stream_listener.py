@@ -25,13 +25,3 @@ class StreamListener(tweepy.streaming.StreamListener):
 
     def on_error(self, status):
         print(status)
-
-
-
-Stream = None
-        
-def stream(query):
-    Stream = StreamListener()
-    stream = tweepy.Stream(twitter.TwitteroAuthHandler, Stream)
-    stream.filter(track=query)
-#    stream.filter(track=query, languages = Config.TW_LANGUAGES)

@@ -3,9 +3,10 @@
 class Config:
     """Configuration"""
     Debug                   = True
+    DB_DRIVER               = "couch"
     DB_PROT                 = "http://"
-    DB_HOST                 = "mydb.myhost.com"
-    DB_PORT                 = "80"    
+    DB_HOST                 = "localhost"
+    DB_PORT                 = "5984"    
     DB_TWEETS               = "tweets_ey"
     DB_PARAMS               = "monitor_cfg"
     DB_USER                 = "admin"
