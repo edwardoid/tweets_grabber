@@ -1,18 +1,17 @@
 #!/usr/bin/python2
 
-from config import *
-from database import DB
-from tweepy import OAuthHandler
+from config import Config
+import tweepy
 
 class Twitter:
 	__twitter_oAuth_handler = None
 	__filter = ""
 	def __init__(self):
-		self.__twitter_oAuth_handler = OAuthHandler(Config.TW_CONSUMER_KEY, Config.TW_CONSUMER_SECRET)
-		self.__twitter_oAuth_handler.set_access_token(Config.TW_ACCESS_TOKEN, Config.TW_ACCESS_TOKEN_SECRET)
+		self.__twitter_oAuth_handler = tweepy.OAuthHandler(Config["twitter"]["consumer_key"], Config["twitter"]["consumer_secret"])
+		self.__twitter_oAuth_handler.set_access_token(Config["twitter"]["access_token"], Config["twitter"]["access_token_secret"])
 		self.__filter = []
-		hts = DB.get_parameter("hashtags")
-		kws = DB.get_parameter("keywords")
+		hts = Config["filter"]["hashtags"]
+		kws = Config["filter"]["keywords"]
 		if hts is not None:
 			self.__filter = hts
 		else:
@@ -25,4 +24,3 @@ class Twitter:
 		stream = tweepy.Stream(self.__twitter_oAuth_handler, listener)
 		stream.filter(track=self.__filter)
 
-		

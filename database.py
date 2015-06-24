@@ -1,9 +1,12 @@
 #!/usr/bin/python2
 
-from config import *
+from config import Config
 from couch import CouchDBStore
+from mongo import MongoDBStore
 
 DB = None
 
-if Config.DB_DRIVER is "couch":
+if Config["database"]["driver"] == "couchdb":
 	DB = CouchDBStore()
+else:
+	DB = MongoDBStore()

@@ -5,14 +5,14 @@ import twitter
 import couchdb
 import json
 from config import *
-from server import *
+from database import DB
 
 class StreamListener(tweepy.streaming.StreamListener):
     """description of class"""
     def on_status(self, status):
         print ("Adding " + str(status.id))
         try:
-            TweetsDatabase.save(status._json)
+            DB.save(status)
         except Exception as e:
             print("Exception: " + str(e));
             f = open("exception.log", "a");

@@ -1,0 +1,36 @@
+{
+  "twitter" : 
+    {
+      "consumer_key" : "",
+      "consumer_secret" : "",
+      "access_token"  : "",
+      "access_token_secret": ""
+    },
+    
+  "filter" :
+    {
+      "language" : [ "ru", "hy", "uk" ],
+      "hashtags" : [ "#ElectricYerevan", "#ProudToBeArmenian" ],
+      "keywords" : [ "Armenia" ]
+    },
+    
+  "database" :
+    {
+      "driver": "couchdb",
+      "mongodb" : {
+        "host" : "localhost",
+        "port" : 27017,
+        "database" : "electricyerevan",
+        "tweets_collection" : "tweets_ey"
+      },
+      
+      "couchdb" : {
+        "protocol" : "http://",
+        "host" : "localhost",
+        "port" : 5984,
+        "user" : "edwardoid",
+        "password" : "#meIx@n2",
+        "database" : "tweets_ey" 
+      }
+    }
+}
